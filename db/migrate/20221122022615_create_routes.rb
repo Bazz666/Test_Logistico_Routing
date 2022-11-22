@@ -6,7 +6,7 @@ class CreateRoutes < ActiveRecord::Migration[6.1]
       t.time :travel_time
       t.integer :total_stops
       t.boolean :action
-      t.references :dirver, null: false, foreign_key: true
+      t.references :driver, null: false, foreign_key: true
       t.references :vehicle, null: false, foreign_key: true
 
       t.timestamps
