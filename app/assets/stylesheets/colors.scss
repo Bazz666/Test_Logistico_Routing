@@ -1,0 +1,16 @@
+$colors: (
+    
+    appgree-light-blue: #03CCAC,
+    appgree-purpple:#7758F6,
+    white: #fff,
+
+);
+     
+@each $color_name, $color in $colors{
+    .#{$color-name}{
+        background-color: $color;
+    }
+    .#{$color-name}-text{
+        color: $color;
+    }
+}
