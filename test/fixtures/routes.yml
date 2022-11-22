@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_at: 2022-11-21 23:26:15
+  ends_at: 2022-11-21 23:26:15
+  travel_time: 2022-11-21 23:26:15
+  total_stops: 1
+  action: false
+  dirver: one
+  vehicle: one
+
+two:
+  start_at: 2022-11-21 23:26:15
+  ends_at: 2022-11-21 23:26:15
+  travel_time: 2022-11-21 23:26:15
+  total_stops: 1
+  action: false
+  dirver: two
+  vehicle: two

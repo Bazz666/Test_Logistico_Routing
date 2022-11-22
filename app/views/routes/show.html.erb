@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start at:</strong>
+  <%= @route.start_at %>
+</p>
+
+<p>
+  <strong>Ends at:</strong>
+  <%= @route.ends_at %>
+</p>
+
+<p>
+  <strong>Travel time:</strong>
+  <%= @route.travel_time %>
+</p>
+
+<p>
+  <strong>Total stops:</strong>
+  <%= @route.total_stops %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @route.action %>
+</p>
+
+<p>
+  <strong>Dirver:</strong>
+  <%= @route.dirver_id %>
+</p>
+
+<p>
+  <strong>Vehicle:</strong>
+  <%= @route.vehicle_id %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
