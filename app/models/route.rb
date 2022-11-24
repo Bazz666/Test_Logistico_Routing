@@ -1,4 +1,8 @@
 class Route < ApplicationRecord
-  belongs_to :dirver
-  belongs_to :vehicle
+ 
+  has_many :drivers
+  has_many :vehicles 
+
+  enum status: [:llegada, :recogida]
+  
 end

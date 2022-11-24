@@ -15,7 +15,7 @@ class RoutesTest < ApplicationSystemTestCase
     click_on "New Route"
 
     check "Action" if @route.action
-    fill_in "Dirver", with: @route.dirver_id
+    fill_in "Driver", with: @route.Driver_id
     fill_in "Ends at", with: @route.ends_at
     fill_in "Start at", with: @route.start_at
     fill_in "Total stops", with: @route.total_stops
@@ -32,7 +32,7 @@ class RoutesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     check "Action" if @route.action
-    fill_in "Dirver", with: @route.dirver_id
+    fill_in "Driver", with: @route.Driver_id
     fill_in "Ends at", with: @route.ends_at
     fill_in "Start at", with: @route.start_at
     fill_in "Total stops", with: @route.total_stops

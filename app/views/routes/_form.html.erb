@@ -32,19 +32,28 @@
   </div>
 
   <div class="field">
-    <%= form.label :action %>
-    <%= form.check_box :action %>
+    <%= form.label :status %>
+    <%= form.select :status, Route.statuses.keys, prompt: "seleciona una accion" %>  
+     
   </div>
 
+  
+
+  <h3>Organizaciones</h3>
+  <p>Por favor seleccione solo una organizacion por formulario</p>
+
+  <h4>routing</h4>
+
   <div class="field">
-    <%= form.label :dirver_id %>
-    <%= form.text_field :dirver_id %>
+    <%= form.label :driver_id %>
+    <%= form.select :driver_id, @drivers.map { |t| [t.name]}, {}, class: "form-control" %>  
   </div>
 
   <div class="field">
     <%= form.label :vehicle_id %>
-    <%= form.text_field :vehicle_id %>
+    <%= form.select :vehicle_id, @vehicles.map { |t| [t.plate]}, {}, class: "form-control" %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

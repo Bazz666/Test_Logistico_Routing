@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_22_024903) do
+ActiveRecord::Schema.define(version: 2022_11_24_023831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2022_11_22_024903) do
     t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "vehicle_id"
+    t.index ["vehicle_id"], name: "index_drivers_on_vehicle_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -27,9 +29,9 @@ ActiveRecord::Schema.define(version: 2022_11_22_024903) do
     t.datetime "ends_at"
     t.time "travel_time"
     t.integer "total_stops"
-    t.boolean "action"
-    t.bigint "driver_id", null: false
-    t.bigint "vehicle_id", null: false
+    t.integer "status"
+    t.bigint "driver_id"
+    t.bigint "vehicle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["driver_id"], name: "index_routes_on_driver_id"
@@ -50,10 +52,14 @@ ActiveRecord::Schema.define(version: 2022_11_22_024903) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string "plate"
+    t.bigint "driver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["driver_id"], name: "index_vehicles_on_driver_id"
   end
 
+  add_foreign_key "drivers", "vehicles"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
+  add_foreign_key "vehicles", "drivers"
 end

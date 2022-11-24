@@ -13,6 +13,8 @@ class RoutesController < ApplicationController
   # GET /routes/new
   def new
     @route = Route.new
+    @drivers = Driver.all
+    @vehicles = Vehicle.all
   end
 
   # GET /routes/1/edit
@@ -65,6 +67,6 @@ class RoutesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def route_params
-      params.require(:route).permit(:start_at, :ends_at, :travel_time, :total_stops, :action, :dirver_id, :vehicle_id)
+      params.require(:route).permit(:start_at, :ends_at, :travel_time, :total_stops, :status, :driver_id, :vehicle_id)
     end
 end

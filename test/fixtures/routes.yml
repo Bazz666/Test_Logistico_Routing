@@ -6,7 +6,7 @@ one:
   travel_time: 2022-11-21 23:26:15
   total_stops: 1
   action: false
-  dirver: one
+  driver: one
   vehicle: one
 
 two:
@@ -15,5 +15,5 @@ two:
   travel_time: 2022-11-21 23:26:15
   total_stops: 1
   action: false
-  dirver: two
+  driver: two
   vehicle: two
