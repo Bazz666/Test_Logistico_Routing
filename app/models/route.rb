@@ -1,7 +1,16 @@
 class Route < ApplicationRecord
  
-  has_many :drivers
-  has_many :vehicles 
+  has_many :drivers, dependent: :destroy
+  has_many :vehicles, dependent: :destroy
+  has_many :organizations, dependent: :destroy
+
+  accepts_nested_attributes_for :drivers 
+  accepts_nested_attributes_for :vehicles 
+ 
+  # validates :name, presence: true
+  # validates :plate, presence: true
+  validates_associated :drivers
+  validates_associated :vehicles
 
   enum status: [:llegada, :recogida]
   

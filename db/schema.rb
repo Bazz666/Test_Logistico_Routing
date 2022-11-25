@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_24_023831) do
+ActiveRecord::Schema.define(version: 2022_11_25_053011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,17 @@ ActiveRecord::Schema.define(version: 2022_11_24_023831) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "vehicle_id"
+    t.bigint "route_id"
+    t.index ["route_id"], name: "index_drivers_on_route_id"
     t.index ["vehicle_id"], name: "index_drivers_on_vehicle_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.bigint "routes_id", null: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["routes_id"], name: "index_organizations_on_routes_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -46,6 +56,8 @@ ActiveRecord::Schema.define(version: 2022_11_24_023831) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "rut"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -55,11 +67,16 @@ ActiveRecord::Schema.define(version: 2022_11_24_023831) do
     t.bigint "driver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "route_id"
     t.index ["driver_id"], name: "index_vehicles_on_driver_id"
+    t.index ["route_id"], name: "index_vehicles_on_route_id"
   end
 
+  add_foreign_key "drivers", "routes"
   add_foreign_key "drivers", "vehicles"
+  add_foreign_key "organizations", "routes", column: "routes_id"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
   add_foreign_key "vehicles", "drivers"
+  add_foreign_key "vehicles", "routes"
 end

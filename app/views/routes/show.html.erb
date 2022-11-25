@@ -26,13 +26,17 @@
 </p>
 
 <p>
-  <strong>Driver:</strong>
-  <%= @route.driver_id %>
+  <strong>Dirver:</strong>
+  <% @route.drivers.each do |d| %>
+    <%= d.name %>
+  <% end%>
 </p>
 
 <p>
   <strong>Vehicle:</strong>
-  <%= @route.vehicle_id %>
+   <% @route.vehicles.each do |v| %>
+    <%= v.plate %>
+  <% end%>
 </p>
 
 <%= link_to 'Edit', edit_route_path(@route) %> |

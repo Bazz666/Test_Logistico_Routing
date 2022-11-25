@@ -1,15 +1,7 @@
 class Vehicle < ApplicationRecord
-    has_many :routes
-    belongs_to :driver , optional: true
+    belongs_to :route, optional:true
+    has_many :drivers , dependent: :destroy
 
-
-    def v_routing
-        @vehicles = Vehicle.where(id: [1,2,3,4,5])
-    end
-
-    def v_pricing
-        @vehicles = Vehicle.where(id: [6,7,8])
-    end
 
     def to_s
         plate

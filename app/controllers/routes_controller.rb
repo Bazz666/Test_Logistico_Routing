@@ -1,6 +1,8 @@
 class RoutesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_route, only: %i[ show edit update destroy ]
 
+  
   # GET /routes or /routes.json
   def index
     @routes = Route.all
@@ -13,12 +15,15 @@ class RoutesController < ApplicationController
   # GET /routes/new
   def new
     @route = Route.new
-    @drivers = Driver.all
-    @vehicles = Vehicle.all
+    @route.drivers.new   
+    @route.vehicles.new
+    @driver = Driver.pluck :name, :id 
+    @vehicle = Vehicle.pluck :plate, :id 
   end
 
   # GET /routes/1/edit
   def edit
+    
   end
 
   # POST /routes or /routes.json
@@ -67,6 +72,6 @@ class RoutesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def route_params
-      params.require(:route).permit(:start_at, :ends_at, :travel_time, :total_stops, :status, :driver_id, :vehicle_id)
+      params.require(:route).permit(:start_at, :ends_at, :travel_time, :total_stops, :status, :vehicle_id, :driver_id , drivers_attributes: [:name], vehicles_attributes: [:plate])
     end
 end

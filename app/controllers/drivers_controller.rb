@@ -1,5 +1,7 @@
 class DriversController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_driver, only: %i[ show edit update destroy ]
+  
 
   # GET /drivers or /drivers.json
   def index
