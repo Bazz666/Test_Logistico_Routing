@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2022_11_25_053011) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name"
-    t.bigint "routes_id", null: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["routes_id"], name: "index_organizations_on_routes_id"
   end
 
   create_table "routes", force: :cascade do |t|
@@ -74,7 +72,6 @@ ActiveRecord::Schema.define(version: 2022_11_25_053011) do
 
   add_foreign_key "drivers", "routes"
   add_foreign_key "drivers", "vehicles"
-  add_foreign_key "organizations", "routes", column: "routes_id"
   add_foreign_key "routes", "drivers"
   add_foreign_key "routes", "vehicles"
   add_foreign_key "vehicles", "drivers"

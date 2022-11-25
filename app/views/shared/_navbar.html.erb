@@ -1,44 +1,14 @@
 <header>
    <nav class="sidebar close">
-        <header>
-            <div class="image-text">
-                 <% if user_signed_in? %>
-                
-                <div class="text logo-text">
-                    <span class="name">  @<%= current_user.name %></span>
-                </div>
-                <% end %>
-            </div>
-            <i class='bx bx-chevron-right toggle'></i>
-        </header>
+        
 
         <div class="menu-bar">
             <div class="menu">
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="/posts">
+                        <a href="/routes">
                             <i class='bx bx-home-alt icon' ></i>
                             <span class="text nav-text">Routing</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-bell icon'></i>
-                            <span class="text nav-text">Driver</span>
-                        </a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="/friendships">
-                            <i class='bx bx-user icon'></i>
-                            <span class="text nav-text">Vehicle</span>
-                        </a>
-                        
-                        
-                    </li>
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-message-square-dots icon' ></i>
-                            <span class="text nav-text">Organization</span>
                         </a>
                     </li>
                 </ul>

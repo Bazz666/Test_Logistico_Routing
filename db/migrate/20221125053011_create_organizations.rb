@@ -2,7 +2,6 @@ class CreateOrganizations < ActiveRecord::Migration[6.1]
   def change
     create_table :organizations do |t|
       t.string :name
-      t.references :routes, null: false, foreign_key: true
 
       t.timestamps
     end
