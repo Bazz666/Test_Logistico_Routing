@@ -6,6 +6,7 @@ class Route < ApplicationRecord
 
   accepts_nested_attributes_for :drivers 
   accepts_nested_attributes_for :vehicles 
+accepts_nested_attributes_for :organizations
  
   # validates :name, presence: true
   # validates :plate, presence: true
