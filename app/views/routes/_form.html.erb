@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+ 
+
   <div class="field">
     <%= form.label :start_at %>
     <%= form.datetime_select :start_at %>
@@ -37,8 +39,11 @@
      
   </div>
   
-  <h3>Organizaciones</h3>
-  <p>Por favor seleccione solo una organizacion por formulario</p>
+   <%= form.fields_for :organizations do |organization|%>
+    <div class="form-group">
+      <%= organization.select :name, Organization.all, class:"form-control" %>
+    </div>
+  <%end%>
   
   <%= form.fields_for :drivers do |driver|%>
     <div class="form-group">
