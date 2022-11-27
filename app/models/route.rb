@@ -2,7 +2,7 @@ class Route < ApplicationRecord
  
   has_many :drivers, dependent: :destroy
   has_many :vehicles, dependent: :destroy
-  has_many :organizations, dependent: :destroy
+  has_many :organizations , dependent: :destroy
 
   accepts_nested_attributes_for :drivers 
   accepts_nested_attributes_for :vehicles 
@@ -21,7 +21,10 @@ class Route < ApplicationRecord
   
 
   enum status: [:llegada, :recogida]
+
   
+
+ 
   
   
   

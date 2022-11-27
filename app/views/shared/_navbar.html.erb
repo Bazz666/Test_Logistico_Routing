@@ -1,39 +1,37 @@
-<header>
-   <nav class="">
-        
+ <% if current_user %>
+    <header>
+        <nav class="">
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="/routes">
+                                <i class='bx bx-home-alt icon'></i>
+                                <span class="text nav-text">Rutas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-        <div class="menu-bar">
-            <div class="menu">
-                <ul class="menu-links">
+                <div class="bottom-content pb-4">
+
                     <li class="nav-link">
-                        <a href="/routes">
-                            <i class='bx bx-home-alt icon' ></i>
-                            <span class="text nav-text">Routing</span>
+                        <a>
+                            <%= button_to "Edit Profile" , edit_user_registration_path, class:' text-white btn btn-warning' %>
                         </a>
                     </li>
-                </ul>
+                    <li class="nav-link">
+                        <a>
+
+                            <%= button_to "Sign out" , destroy_user_session_path, method: :delete, class:" text-white btn
+                                btn-danger" %>
+                        </a>
+
+                    </li>
+                </div>
             </div>
 
-            <div class="bottom-content pb-4">
-                
-                <li class="nav-link">
-                    <a >
-                        <%= link_to "Edit Profile", edit_user_registration_path, class:' text-white button-18' %>
-                    </a>
-                </li>
-                <li class="nav-link">
-                    <a>
-                        
-                        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:" text-white button-18" %>
-                    </a>
-                    
-                </li>
-            </div>
-        </div>
+        </nav>
 
-    </nav>
-
-    
-
-   
-</header>
+    </header>
+<% end%>

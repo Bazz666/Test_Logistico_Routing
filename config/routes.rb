@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :organizations
-  devise_for :users, controllers: {sessions: 'users/sessions' }
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   resources :routes
   resources :vehicles
   resources :drivers

@@ -18,9 +18,6 @@ Vehicle.connection.execute('ALTER SEQUENCE vehicles_id_seq RESTART WITH 1')
 Route.connection.execute('ALTER SEQUENCE routes_id_seq RESTART WITH 1')
 Organization.connection.execute('ALTER SEQUENCE organizations_id_seq RESTART WITH 1')
 
-puts ' create organizations...'
-
-
 
 puts 'create drivers...'
 carlos=Driver.create!(name: "Carlos")
@@ -29,8 +26,14 @@ diego=Driver.create!(name: "Diego")
 andrea=Driver.create!(name: "Andrea")
 mauro=Driver.create!(name: "Mauro")
 
+puts 'create organizations...'
+routing=Organization.create!(name: "routing")
+pricing= Organization.create!(name: "pricing")
+
+
 puts'create vehicles...'
 8.times do |i|
+    
     Vehicle.create!(
         plate: "VE#{i}"
     )

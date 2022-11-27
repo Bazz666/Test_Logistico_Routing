@@ -1,67 +1,71 @@
-<%= form_with(model: route) do |form| %>
-  <% if route.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
 
-      <ul>
-        <% route.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+   
+  <%= form_with(model: route) do |form| %>
+    <% if route.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(route.errors.count, "error") %> prohibited this route from being saved:</h2>
+
+        <ul>
+          <% route.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  
+
+    <div class="form-group">
+      <%= form.label :start_at %>
+      <%= form.datetime_select :start_at %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :ends_at %>
+      <%= form.datetime_select :ends_at %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :travel_time %>
+      <%= form.time_select :travel_time %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :total_stops %>
+      <%= form.number_field :total_stops %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :status %>
+      <%= form.select :status, Route.statuses.keys, prompt: "seleciona una accion" %>  
+      
+    </div>
+    
+    <%= form.fields_for :organizations do |organization|%>
+      <div class="form-group">
+        <%= organization.select :name , Organization.where(id: [1,2]), class:"form-control"  %>
+      </div>
+    <%end%>
+
+    
+      <%= form.fields_for :drivers do |driver|%>
+      <div class="form-group">
+        <%= driver.select :name, Driver.where(id: [1,2,3,4,5]), class:"form-control" %>
+      </div>
+      <%end%>
+
+      <%= form.fields_for :vehicles do |vehicle|%>
+        <div class="form-group">
+          <%= vehicle.select :plate ,Vehicle.where(id: [1,2,3,4,5,6,7,8]), class:"form-control" %>
+        </div>
+      <%end%>
+    
+
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
 
  
-
-  <div class="field">
-    <%= form.label :start_at %>
-    <%= form.datetime_select :start_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ends_at %>
-    <%= form.datetime_select :ends_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :travel_time %>
-    <%= form.time_select :travel_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total_stops %>
-    <%= form.number_field :total_stops %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Route.statuses.keys, prompt: "seleciona una accion" %>  
-     
-  </div>
-  
-   <%= form.fields_for :organizations do |organization|%>
-    <div class="form-group">
-      <%= organization.select :name , Organization.all, class:"form-control"  %>
-    </div>
-  <%end%>
-
-  
-    <%= form.fields_for :drivers do |driver|%>
-    <div class="form-group">
-      <%= driver.select :name, Driver.all, class:"form-control" %>
-    </div>
-    <%end%>
-
-    <%= form.fields_for :vehicles do |vehicle|%>
-      <div class="form-group">
-        <%= vehicle.select :plate ,Vehicle.all, class:"form-control" %>
-      </div>
-    <%end%>
-  
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
