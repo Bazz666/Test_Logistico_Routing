@@ -19,13 +19,19 @@
   <tbody>
     <% @routes.each do |route| %>
     <tr>
-      <td><%= route.organization %></td>
+      
       <td><%= route.start_at %></td>
       <td><%= route.ends_at %></td>
       <td><%= route.travel_time %></td>
       <td><%= route.total_stops %></td>
       <td><%= route.status %></td>
       <td>
+      <td>
+        <% route.organizations.each do |o| %>
+          <%= o.name %>
+        <% end%>
+      </td>
+
         <% route.drivers.each do |d| %>
           <%= d.name %>
         <% end%>
@@ -39,7 +45,7 @@
     
       <td><%= link_to 'Show', route %></td>
       <td><%= link_to 'Edit', edit_route_path(route) %></td>
-      <td><%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
      <% end%>
     </tr>
   </tbody>

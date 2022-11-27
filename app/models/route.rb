@@ -13,6 +13,16 @@ class Route < ApplicationRecord
   validates_associated :drivers
   validates_associated :vehicles
 
+  validates :start_at, :presence => true
+  validates :ends_at, :presence => true
+  validates :travel_time, :presence => true
+  validates :total_stops, :presence => true 
+  validates :status, :presence => true 
+  
+
   enum status: [:llegada, :recogida]
+  
+  
+  
   
 end

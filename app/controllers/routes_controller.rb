@@ -14,16 +14,19 @@ class RoutesController < ApplicationController
 
   # GET /routes/new
   def new
+  
     @route = Route.new
     @route.drivers.new   
     @route.vehicles.new
     @route.organizations.new
     @driver = Driver.pluck :name, :id 
     @vehicle = Vehicle.pluck :plate, :id 
-    @vehicle = Vehicle.pluck :name, :id 
+    @organization = Organization.pluck :name, :id 
+
+    
   end
 
-  # GET /routes/1/edit
+  # GET /routes/1/edit()
   def edit
     
   end
