@@ -198,6 +198,12 @@ Devise.setup do |config|
 
   # Defines which key will be used when locking and unlocking an account
   # config.unlock_keys = [:email]
+  # config.omniauth :github, "4fbf6a47fb45c0aa50dd", "1a08267aadc848e10e2f90d7a43aba7e4d3cbd48", scope: 'user:email'
+  OmniAuth.config.allowed_request_methods = [:get, :post]
+
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :github, ENV['4fbf6a47fb45c0aa50dd'], ENV['0c156d77c7f8b2a1c66b33a3dde9a9ecd934efa9']
+  end
 
   # Defines which strategy will be used to unlock an account.
   # :email = Sends an unlock link to the user email
@@ -271,7 +277,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :github, '4fbf6a47fb45c0aa50dd', '42119d7fa536153a0d5e83bbb01a98885ec0d758', :scope => 'user:email'
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
