@@ -19,18 +19,18 @@
   <tbody>
     <% @routes.each do |route| %>
     <tr>
-      
+      <td>
+        <% route.organizations.each do |o| %>
+          <%= o.name %>
+        <% end%>
+      </td>
       <td><%= route.start_at %></td>
       <td><%= route.ends_at %></td>
       <td><%= route.travel_time %></td>
       <td><%= route.total_stops %></td>
       <td><%= route.status %></td>
       <td>
-      <td>
-        <% route.organizations.each do |o| %>
-          <%= o.name %>
-        <% end%>
-      </td>
+      
 
         <% route.drivers.each do |d| %>
           <%= d.name %>
@@ -53,4 +53,4 @@
 
 <br>
 
-<%= link_to 'New Route', new_route_path ,remote: true%>
+<%= link_to 'New Route', new_route_path  %>

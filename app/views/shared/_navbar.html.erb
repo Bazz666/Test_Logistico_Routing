@@ -16,17 +16,17 @@
 
             <div class="bottom-content pb-4">
                 
-                    <li class="nav-link">
-                    <a href="/users/edit">
-                        <i class='bx bx-edit icon' ></i>
-                        <span class="text nav-text">Edit Profile</span>
+                <li class="nav-link">
+                    <a >
+                        <%= link_to "Edit Profile", edit_user_registration_path, class:' text-white button-18' %>
                     </a>
                 </li>
-                    <li class="nav-link">
-                    <a href="/users/sign_out">
-                        <i class='bx bx-log-out icon' ></i>
-                        <span class="text nav-text">Logout</span>
+                <li class="nav-link">
+                    <a>
+                        
+                        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:" text-white button-18" %>
                     </a>
+                    
                 </li>
             </div>
         </div>
